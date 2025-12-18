@@ -216,46 +216,42 @@ return false
   },
   {
     id: 7,
-    title: "問7: 条件分岐と論理演算",
+    title: "問7: 文字列処理（文字のカウント）",
     text: `
         <p>【前提条件】</p>
-        <p>関数 <code>classify</code> は、会員の年齢 <code>age</code> と会員種別 <code>type</code> を受け取り、割引率を整数で返す。<br>
-        評価基準は以下の通りである。</p>
-        <ul>
-            <li>年齢が 65歳以上 または 会員種別が "VIP" の場合：30</li>
-            <li>年齢が 20歳以上65歳未満 かつ 会員種別が "NORMAL" の場合：10</li>
-            <li>それ以外：0</li>
-        </ul>
+        <p>関数 <code>countChar</code> は，文字列 <code>str</code> の中に文字 <code>c</code> が何回出現するかを返す。</p>
         <p>【問題】</p>
-        <p>次のプログラム中の <strong>空欄</strong> に入れる正しい条件式を選べ。</p>
+        <p>次のプログラム中の <strong>空欄</strong> に入れる最も適切な条件式を選べ。</p>
         <pre>
-○整数型: classify(整数型: age, 文字列型: type)
-  if (age ≧ 65 or type が "VIP" と等しい)
-    return 30
-  elseif (  空欄  )
-    return 10
-  else
-    return 0
-  endif
+○整数型: countChar(文字列型: str, 文字型: c)
+  整数型: i, count ← 0
+  for (i を 1 から strの文字数 まで 1ずつ増やす)
+    if (      空欄      )
+      count ← count ＋ 1
+    endif
+  endfor
+  return count
         </pre>`,
     options: [
-      {
-        label: 'ア. (age ≧ 20) and (age ＜ 65) and (type が "NORMAL" と等しい)',
-        value: "a",
-      },
-      { label: 'イ. (age ≧ 20) and (type が "NORMAL" と等しい)', value: "b" },
-      { label: 'ウ. (age ＜ 65) and (type が "NORMAL" と等しい)', value: "c" },
-      { label: 'エ. (type が "NORMAL" と等しい)', value: "d" },
+      { label: "ア. str[i] ＝ c", value: "a" },
+      { label: "イ. str ＝ c", value: "b" },
+      { label: "ウ. i ＝ c", value: "c" },
+      { label: "エ. str[i] ≠ c", value: "d" },
     ],
     correct: "a",
     explanation: `
-        <p>問題文の条件「年齢が 20歳以上65歳未満 かつ 会員種別が "NORMAL" の場合」をそのまま忠実にプログラムへ落とし込む問題です。</p>
+        <p>文字列の中から特定の文字を探してカウントする、基本的な文字列処理のアルゴリズムです。</p>
         <ul>
-            <li>「20歳以上」 → <code>age ≧ 20</code></li>
-            <li>「65歳未満」 → <code>age ＜ 65</code></li>
-            <li>「会員種別が "NORMAL"」 → <code>type が "NORMAL" と等しい</code></li>
+            <li>ループ変数 <code>i</code> は、文字列 <code>str</code> の各文字にアクセスするための添字（インデックス）として使われています。</li>
+            <li>「文字列の <code>i</code> 番目の文字 <code>str[i]</code>」が「探している文字 <code>c</code>」と一致するかどうかを判定する必要があります。</li>
+            <li>したがって、条件式は <strong>str[i] ＝ c</strong> となります。</li>
         </ul>
-        <p>これら 3 つの条件すべてを満たす必要があるため、<code>and</code> で結合した <strong>(age ≧ 20) and (age ＜ 65) and (type が "NORMAL" と等しい)</strong> が正解となります。</p>
+        <p>選択肢の検討：</p>
+        <ul>
+            <li>イ：文字列全体 <code>str</code> と一文字 <code>c</code> を比較しており、意味が通りません。</li>
+            <li>ウ：添字 <code>i</code>（数値）と文字 <code>c</code> を比較しており誤りです。</li>
+            <li>エ：一致「しない」場合にカウントすることになり、逆の動作になります。</li>
+        </ul>
         <p>したがって、正解は <strong>ア</strong> です。</p>`,
   },
   {
